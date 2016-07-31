@@ -1,0 +1,26 @@
+
+
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    {% if user.is_authenticated %}
+
+    {% else %}
+    <form role="form" method="post"  action="">{% csrf_token %}
+        <div id="title1"><center>Login</center></div>
+        <br>
+        <div class="form-group">
+            <label for="id_username">Username:</label>{{ form.username }}
+            </div>
+          <div class="form-group">
+            <label for="id_password">Password:</label>{{ form.password }}
+              </div>
+        <button type="submit" class="btn btn-default" style="background-color: #888888;"><font size="5px">Login</font></button>
+
+        <input type="hidden" name="next" value="/" />
+    </form>
+    {{% endif %}
+{% endblock %}

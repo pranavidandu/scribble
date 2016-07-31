@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron">TITLE:<br>{{ post.title }}
+    <hr>
+    <div clas="well"><br>STORY:<br>{{ post.text }}</div>
+    <hr>
+    <div align="right"><p>{{ post.created_on }}</p></div>
+
+<div align="left"> <a href="/post/update/{{ post.id }}"><span class="glyphicon glyphicon-edit"></span></a>
+    <a href="/post/delete/{{ post.id }}"><span class="glyphicon glyphicon-trash"></span></a>
+
+</div>
+
+</div>
+{% endblock %}

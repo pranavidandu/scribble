@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for post in posts %}
+    {{ post.timestamp|date:"N d, Y" }}
+    <a href="viewpost/{{post.slug}}"><div class="well">{{ post.title }}
+    <div align="right"><p>{{ post.created_on }}</p></div>
+    </div></a>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Previous Page</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Next Page</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
